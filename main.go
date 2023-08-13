@@ -11,7 +11,8 @@ func main() {
 	}
 
 	buildDNSCmd(rootCmd)
-
+	buildTCPCmd(rootCmd)
+	
 	err := rootCmd.Execute()
 	if err != nil {
 		panic(err)
