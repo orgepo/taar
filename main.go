@@ -9,12 +9,13 @@ import (
 func main() {
 	var rootCmd = &cobra.Command{
 		Use:     "taar",
-		Version: "1.0.0",
+		Version: "0.7.0",
 	}
 
 	cmd.BuildDNSCmd(rootCmd)
 	cmd.BuildTCPCmd(rootCmd)
-	
+	cmd.BuildIPCmd(rootCmd)
+
 	err := rootCmd.Execute()
 	if err != nil {
 		panic(err)

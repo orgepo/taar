@@ -9,7 +9,7 @@ import (
 
 func BuildTCPCmd(parentCmd *cobra.Command) {
 	tcpCmd := &cobra.Command{
-		Use: "tcp",
+		Use:   "tcp",
 		Short: "listen to tcp",
 	}
 	parentCmd.AddCommand(tcpCmd)
@@ -31,7 +31,7 @@ func BuildTCPCmd(parentCmd *cobra.Command) {
 	}
 }
 
-func accept(l net.Listener, pch chan string)  {
+func accept(l net.Listener, pch chan string) {
 	for {
 		conn, err := l.Accept()
 		if err != nil {
