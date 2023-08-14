@@ -1,6 +1,8 @@
 package main
 
 import (
+	"taar/cmd"
+
 	"github.com/spf13/cobra"
 )
 
@@ -10,8 +12,8 @@ func main() {
 		Version: "1.0.0",
 	}
 
-	buildDNSCmd(rootCmd)
-	buildTCPCmd(rootCmd)
+	cmd.BuildDNSCmd(rootCmd)
+	cmd.BuildTCPCmd(rootCmd)
 	
 	err := rootCmd.Execute()
 	if err != nil {

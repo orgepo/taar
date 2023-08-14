@@ -1,4 +1,4 @@
-package main
+package cmd
 
 import (
 	"fmt"
@@ -9,7 +9,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-func buildDNSCmd(parentCmd *cobra.Command) {
+func BuildDNSCmd(parentCmd *cobra.Command) {
 	dnsCmd := &cobra.Command{
 		Use:   "dns",
 		Short: "change and manage dns",
