@@ -6,6 +6,11 @@ you can use `taar v0.7.0` to :
 * track IP address
 * start a TCP server
 
-  use --help to find out how it works!
+# install 
+```bash
+go install github.com/kehiy/taar@latest
+```
 
-  contributing are welcomed!
+use --help to find out how it works!
+
+Contributions are welcomed!
