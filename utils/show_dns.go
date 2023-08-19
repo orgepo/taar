@@ -1,13 +1,13 @@
 package utils
 
 import (
-	"io/ioutil"
+	"os"
 )
 
 func ShowResolve() (string, error) {
 	path := "/etc/resolv.conf"
 
-	data, err := ioutil.ReadFile(path)
+	data, err := os.ReadFile(path)
 	if err != nil {
 		return "", err
 	}

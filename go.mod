@@ -1,4 +1,4 @@
-module taar
+module github.com/kehiy/taar
 
 go 1.21.0
 

@@ -1,23 +1,23 @@
+PACKAGES=$(shell go list ./... | grep -v 'tests')
+
+### Tools needed for development
+devtools:
+	@echo "Installing devtools"
+	go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+	go install github.com/tetafro/godot/cmd/godot@latest
+	go install mvdan.cc/gofumpt@latest
+
+## build
+build:
+	go build -o bin/taar
+
+cp:
+	sudo cp bin/taar /usr/bin 
+
+### Formatting, linting, and vetting
 fmt:
-	gofmt -s -w .
+	gofumpt -l -w .
+	godot -w .
 
 check:
-	golangci-lint run \
-		--build-tags "${BUILD_TAG}" \
-		--timeout=20m0s \
-		--enable=gofmt \
-		--enable=unconvert \
-		--enable=unparam \
-		--enable=asciicheck \
-		--enable=misspell \
-		--enable=revive \
-		--enable=decorder \
-		--enable=reassign \
-		--enable=usestdlibvars \
-		--enable=nilerr \
-		--enable=gosec \
-		--enable=exportloopref \
-		--enable=whitespace \
-		--enable=goimports \
-		--enable=gocyclo \
-		--enable=lll
+	golangci-lint run --build-tags "${BUILD_TAG}" --timeout=20m0s

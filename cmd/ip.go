@@ -4,10 +4,11 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
-	"taar/types"
-	"taar/utils"
 
-	"github.com/spf13/cobra"
+	cobra "github.com/spf13/cobra"
+
+	"github.com/kehiy/taar/types"
+	"github.com/kehiy/taar/utils"
 )
 
 func BuildIPCmd(parentCmd *cobra.Command) {

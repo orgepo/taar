@@ -1,13 +1,13 @@
 package main
 
 import (
-	"taar/cmd"
+	"github.com/kehiy/taar/cmd"
 
 	"github.com/spf13/cobra"
 )
 
 func main() {
-	var rootCmd = &cobra.Command{
+	rootCmd := &cobra.Command{
 		Use:     "taar",
 		Version: "0.7.0",
 	}

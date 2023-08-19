@@ -2,11 +2,10 @@ package cmd
 
 import (
 	"fmt"
-	"io/ioutil"
+	"os"
 
-	"taar/utils"
-
-	"github.com/spf13/cobra"
+	"github.com/kehiy/taar/utils"
+	cobra "github.com/spf13/cobra"
 )
 
 func BuildDNSCmd(parentCmd *cobra.Command) {
@@ -45,7 +44,7 @@ func changeDNS(DNSs []string) error {
 		newContent += fmt.Sprintf("nameserver %s\n", dns)
 	}
 
-	err := ioutil.WriteFile(path, []byte(newContent), 0600)
+	err := os.WriteFile(path, []byte(newContent), 0o600)
 	if err != nil {
 		return err
 	}
