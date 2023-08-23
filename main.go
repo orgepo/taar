@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/kehiy/taar/cmd"
+	commands "github.com/kehiy/taar/commands"
 
 	"github.com/spf13/cobra"
 )
@@ -12,9 +12,9 @@ func main() {
 		Version: "0.7.0",
 	}
 
-	cmd.BuildDNSCmd(rootCmd)
-	cmd.BuildTCPCmd(rootCmd)
-	cmd.BuildIPCmd(rootCmd)
+	commands.BuildDNSCmd(rootCmd)
+	commands.BuildTCPCmd(rootCmd)
+	commands.BuildIPCmd(rootCmd)
 
 	err := rootCmd.Execute()
 	if err != nil {
