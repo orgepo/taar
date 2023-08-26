@@ -15,6 +15,7 @@ func main() {
 	commands.BuildDNSCommand(rootCmd)
 	commands.BuildTCPCommand(rootCmd)
 	commands.BuildIPCommand(rootCmd)
+	commands.BuildMACCommand(rootCmd)
 
 	err := rootCmd.Execute()
 	if err != nil {

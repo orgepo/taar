@@ -14,12 +14,12 @@ func BuildDNSCommand(parentCmd *cobra.Command) {
 		Short: "change and manage dns",
 	}
 	buildSetCommand(dnsCmd)
-	buildShowCommand(dnsCmd)
+	buildShowResolveCommand(dnsCmd)
 
 	parentCmd.AddCommand(dnsCmd)
 }
 
-func buildShowCommand(parentCmd *cobra.Command) {
+func buildShowResolveCommand(parentCmd *cobra.Command) {
 	showCmd := &cobra.Command{
 		Use:   "show",
 		Short: "show dns setting",
