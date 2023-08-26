@@ -2,8 +2,6 @@ package commands
 
 import (
 	"encoding/json"
-	"fmt"
-	"log"
 
 	cobra "github.com/spf13/cobra"
 
@@ -11,29 +9,36 @@ import (
 	"github.com/kehiy/taar/utils"
 )
 
-func BuildIPCmd(parentCmd *cobra.Command) {
+func BuildIPCommand(parentCmd *cobra.Command) {
 	IPCmd := &cobra.Command{
 		Use:   "ip",
 		Short: "ip utils",
 	}
+	buildTrackCommand(IPCmd)
+
 	parentCmd.AddCommand(IPCmd)
+}
 
-	trackOpt := IPCmd.Flags().BoolP("track", "t", false, "track IP address info")
+func buildTrackCommand(parentCmd *cobra.Command) {
+	trackCmd := &cobra.Command{
+		Use:   "track",
+		Short: "track an IP address data",
+	}
+	parentCmd.AddCommand(trackCmd)
 
-	IPCmd.Run = func(cmd *cobra.Command, args []string) {
-		if *trackOpt {
-			if len(args) > 0 {
-				for _, IP := range args {
-					showData(IP)
-				}
-			} else {
-				cmd.Println("please provide an IP address")
+	trackCmd.Run = func(cmd *cobra.Command, args []string) {
+		if len(args) > 0 {
+			for _, IP := range args {
+				showData(IP, cmd)
 			}
+		} else {
+			cmd.Println("please provide an IP address")
 		}
 	}
 }
 
-func showData(ip string) {
+// ! not CMDs.
+func showData(ip string, cmd *cobra.Command) {
 	url := "http://ipinfo.io/" + ip + "/geo"
 	responseByte := utils.GetDataHTTP(url)
 
@@ -41,11 +46,11 @@ func showData(ip string) {
 
 	err := json.Unmarshal(responseByte, &data)
 	if err != nil {
-		log.Println("Unable to unmarshal the response")
+		cmd.Println("Unable to unmarshal the response")
 	}
 
-	fmt.Println("DATA FOUND :")
+	cmd.Println("DATA FOUND :")
 
-	fmt.Printf("IP :%s\nCITY :%s\nREGION :%s\nCOUNTRY :%s\nLOCATION :%s\nTIMEZONE:%s\nPOSTAL :%s\n",
+	cmd.Printf("IP :%s\nCITY :%s\nREGION :%s\nCOUNTRY :%s\nLOCATION :%s\nTIMEZONE:%s\nPOSTAL :%s\n",
 		data.IP, data.City, data.Region, data.Country, data.Loc, data.Timezone, data.Postal)
 }

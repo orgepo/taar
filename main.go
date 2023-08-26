@@ -12,9 +12,9 @@ func main() {
 		Version: "0.7.0",
 	}
 
-	commands.BuildDNSCmd(rootCmd)
-	commands.BuildTCPCmd(rootCmd)
-	commands.BuildIPCmd(rootCmd)
+	commands.BuildDNSCommand(rootCmd)
+	commands.BuildTCPCommand(rootCmd)
+	commands.BuildIPCommand(rootCmd)
 
 	err := rootCmd.Execute()
 	if err != nil {

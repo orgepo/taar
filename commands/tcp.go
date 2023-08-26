@@ -1,36 +1,47 @@
 package commands
 
 import (
-	"fmt"
 	"net"
 
 	"github.com/spf13/cobra"
 )
 
-func BuildTCPCmd(parentCmd *cobra.Command) {
-	tcpCmd := &cobra.Command{
+func BuildTCPCommand(parentCmd *cobra.Command) {
+	TCPCmd := &cobra.Command{
 		Use:   "tcp",
 		Short: "listen to tcp",
 	}
-	parentCmd.AddCommand(tcpCmd)
+	buildListenCommand(TCPCmd)
 
-	listenOpt := tcpCmd.Flags().StringP("listen", "l", ":3000", "listening port")
+	parentCmd.AddCommand(TCPCmd)
+}
 
-	tcpCmd.Run = func(cmd *cobra.Command, args []string) {
-		l, err := net.Listen("tcp", *listenOpt)
+func buildListenCommand(parentCmd *cobra.Command) {
+	listenCmd := &cobra.Command{
+		Use:   "listen",
+		Short: "listen to TCP packets",
+	}
+	parentCmd.AddCommand(listenCmd)
+
+	listenCmd.Run = func(cmd *cobra.Command, args []string) {
+		if len(args) == 0 {
+			cmd.PrintErr("please provide an address to listen.")
+		}
+		l, err := net.Listen("tcp", args[0])
 		if err != nil {
 			cmd.PrintErrf("can't listen tcp, error:\n%v", err)
 		} else {
-			cmd.Printf("start tcp server on: %s\n", *listenOpt)
+			cmd.Printf("start tcp server on: %s\n", args[0])
 			pch := make(chan string, 1024)
 			go accept(l, pch)
 			for msg := range pch {
-				fmt.Printf("new packet data: %s\n", msg)
+				cmd.Printf("new packet data: %s\n", msg)
 			}
 		}
 	}
 }
 
+// ! not CMDs.
 func accept(l net.Listener, pch chan string) {
 	for {
 		conn, err := l.Accept()
