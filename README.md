@@ -1,10 +1,11 @@
 # taar
 my custom network tool
 
-you can use `taar v0.7.0` to :
-* change DNS
-* track IP address
+you can use `taar v0.9.0` to :
+* change DNS and send dns query
+* track IP address ans get IP address list
 * start a TCP server
+* get the MAC address list
 
 # install 
 ```bash
