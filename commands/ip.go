@@ -41,7 +41,7 @@ func buildTrackCommand(parentCmd *cobra.Command) {
 
 func buildIPShowCommand(parentCmd *cobra.Command) {
 	showCmd := &cobra.Command{
-		Use: "show",
+		Use:   "show",
 		Short: "show device IP address",
 	}
 	parentCmd.AddCommand(showCmd)
