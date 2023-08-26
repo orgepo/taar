@@ -2,6 +2,7 @@ package commands
 
 import (
 	"encoding/json"
+	"net"
 
 	cobra "github.com/spf13/cobra"
 
@@ -15,6 +16,7 @@ func BuildIPCommand(parentCmd *cobra.Command) {
 		Short: "ip utils",
 	}
 	buildTrackCommand(IPCmd)
+	buildIPShowCommand(IPCmd)
 
 	parentCmd.AddCommand(IPCmd)
 }
@@ -33,6 +35,24 @@ func buildTrackCommand(parentCmd *cobra.Command) {
 			}
 		} else {
 			cmd.Println("please provide an IP address")
+		}
+	}
+}
+
+func buildIPShowCommand(parentCmd *cobra.Command) {
+	showCmd := &cobra.Command{
+		Use: "show",
+		Short: "show device IP address",
+	}
+	parentCmd.AddCommand(showCmd)
+
+	showCmd.Run = func(cmd *cobra.Command, args []string) {
+		interfaces, err := net.InterfaceAddrs()
+		if err != nil {
+			cmd.PrintErrf("can't get device IP address: %v", err)
+		}
+		for i, inter := range interfaces {
+			cmd.Printf("%d-%v\n", i, inter.String())
 		}
 	}
 }
