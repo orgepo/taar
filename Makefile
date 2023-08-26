@@ -7,9 +7,12 @@ devtools:
 	go install github.com/tetafro/godot/cmd/godot@latest
 	go install mvdan.cc/gofumpt@latest
 
-## build
+## build and release
 build:
 	go build -o bin/taar
+
+releaser:
+	goreleaser release
 
 cp:
 	sudo cp bin/taar /usr/bin 
