@@ -11,12 +11,12 @@ func BuildTCPCommand(parentCmd *cobra.Command) {
 		Use:   "tcp",
 		Short: "listen to tcp",
 	}
-	buildListenCommand(TCPCmd)
+	buildListenTCPCommand(TCPCmd)
 
 	parentCmd.AddCommand(TCPCmd)
 }
 
-func buildListenCommand(parentCmd *cobra.Command) {
+func buildListenTCPCommand(parentCmd *cobra.Command) {
 	listenCmd := &cobra.Command{
 		Use:   "listen",
 		Short: "listen to TCP packets",
@@ -35,7 +35,7 @@ func buildListenCommand(parentCmd *cobra.Command) {
 			pch := make(chan string, 1024)
 			go accept(l, pch)
 			for msg := range pch {
-				cmd.Printf("new packet data: %s\n", msg)
+				cmd.Printf("new packet\n data: %s\n", msg)
 			}
 		}
 	}

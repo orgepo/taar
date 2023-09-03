@@ -16,6 +16,7 @@ func main() {
 	commands.BuildTCPCommand(rootCmd)
 	commands.BuildIPCommand(rootCmd)
 	commands.BuildMACCommand(rootCmd)
+	commands.BuildUDPCommand(rootCmd)
 
 	err := rootCmd.Execute()
 	if err != nil {
