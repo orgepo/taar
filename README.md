@@ -1,10 +1,11 @@
 # taar
 my custom network tool
 
-you can use `taar v0.9.0` to :
+you can use `taar v0.10.0` to :
 * change DNS and send dns query
 * track IP address ans get IP address list
-* start a TCP server
+* start a TCP server and send TCP packet
+* start a UDP server and send UDP packet
 * get the MAC address list
 
 # install 
