@@ -9,7 +9,7 @@ import (
 func BuildMACCommand(parentCmd *cobra.Command) {
 	MACCmd := &cobra.Command{
 		Use:   "mac",
-		Short: "MAC address stuff",
+		Short: "MAC address utils",
 	}
 	buildShowMACCommand(MACCmd)
 
@@ -19,7 +19,7 @@ func BuildMACCommand(parentCmd *cobra.Command) {
 func buildShowMACCommand(parentCmd *cobra.Command) {
 	showCmd := &cobra.Command{
 		Use:   "show",
-		Short: "show your mac address list",
+		Short: "shows device MAC address list",
 	}
 	parentCmd.AddCommand(showCmd)
 

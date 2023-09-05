@@ -12,7 +12,7 @@ import (
 func BuildDNSCommand(parentCmd *cobra.Command) {
 	dnsCmd := &cobra.Command{
 		Use:   "dns",
-		Short: "change and manage dns",
+		Short: "change and manage DNS",
 	}
 	buildSetCommand(dnsCmd)
 	buildShowResolveCommand(dnsCmd)
@@ -24,7 +24,7 @@ func BuildDNSCommand(parentCmd *cobra.Command) {
 func buildShowResolveCommand(parentCmd *cobra.Command) {
 	showCmd := &cobra.Command{
 		Use:   "show",
-		Short: "show dns setting",
+		Short: "shows DNS setting",
 	}
 	parentCmd.AddCommand(showCmd)
 
@@ -36,16 +36,16 @@ func buildShowResolveCommand(parentCmd *cobra.Command) {
 func buildSetCommand(parentCmd *cobra.Command) {
 	setCmd := &cobra.Command{
 		Use:   "set",
-		Short: "set new dns",
+		Short: "sets new DNS",
 	}
 	parentCmd.AddCommand(setCmd)
 
 	setCmd.Run = func(cmd *cobra.Command, args []string) {
 		err := changeDNS(args)
 		if err != nil {
-			cmd.PrintErrf("can't change dns: error:\n%v\n", err)
+			cmd.PrintErrf("can't change DNS: error:\n%v\n", err)
 		} else {
-			cmd.Printf("dns successfully changed, new config:\n%s\n", args)
+			cmd.Printf("DNS successfully changed, new config:\n%s\n", args)
 		}
 	}
 }
@@ -53,7 +53,7 @@ func buildSetCommand(parentCmd *cobra.Command) {
 func buildAskCommand(parentCmd *cobra.Command) {
 	askCmd := &cobra.Command{
 		Use:   "ask",
-		Short: "make a dns query and show the result",
+		Short: "makes a DNS query and show the result",
 	}
 	parentCmd.AddCommand(askCmd)
 

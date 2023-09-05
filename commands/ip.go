@@ -13,7 +13,7 @@ import (
 func BuildIPCommand(parentCmd *cobra.Command) {
 	IPCmd := &cobra.Command{
 		Use:   "ip",
-		Short: "ip utils",
+		Short: "IP utils",
 	}
 	buildTrackCommand(IPCmd)
 	buildIPShowCommand(IPCmd)
@@ -24,7 +24,7 @@ func BuildIPCommand(parentCmd *cobra.Command) {
 func buildTrackCommand(parentCmd *cobra.Command) {
 	trackCmd := &cobra.Command{
 		Use:   "track",
-		Short: "track an IP address data",
+		Short: "tracks an IP address data",
 	}
 	parentCmd.AddCommand(trackCmd)
 
@@ -42,7 +42,7 @@ func buildTrackCommand(parentCmd *cobra.Command) {
 func buildIPShowCommand(parentCmd *cobra.Command) {
 	showCmd := &cobra.Command{
 		Use:   "show",
-		Short: "show device IP address",
+		Short: "shows device IP address",
 	}
 	parentCmd.AddCommand(showCmd)
 

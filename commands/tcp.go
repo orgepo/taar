@@ -9,7 +9,7 @@ import (
 func BuildTCPCommand(parentCmd *cobra.Command) {
 	TCPCmd := &cobra.Command{
 		Use:   "tcp",
-		Short: "listen to tcp",
+		Short: "TCP utils",
 	}
 	buildListenTCPCommand(TCPCmd)
 	buildSendPacketTCPCommand(TCPCmd)
@@ -20,7 +20,7 @@ func BuildTCPCommand(parentCmd *cobra.Command) {
 func buildListenTCPCommand(parentCmd *cobra.Command) {
 	listenCmd := &cobra.Command{
 		Use:   "listen",
-		Short: "listen to TCP packets",
+		Short: "listens to TCP packets",
 	}
 	parentCmd.AddCommand(listenCmd)
 
@@ -48,7 +48,7 @@ func buildListenTCPCommand(parentCmd *cobra.Command) {
 func buildSendPacketTCPCommand(parentCmd *cobra.Command) {
 	sendCmd := &cobra.Command{
 		Use:   "send",
-		Short: "send TCP packet to a server",
+		Short: "sends TCP packet to a server",
 	}
 	parentCmd.AddCommand(sendCmd)
 

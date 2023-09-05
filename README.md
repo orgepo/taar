@@ -1,18 +1,20 @@
-# taar
-my custom network tool
+# Taar
+A painless Network tool.
 
-you can use `taar v0.10.0` to :
-* change DNS and send dns query
-* track IP address ans get IP address list
-* start a TCP server and send TCP packet
-* start a UDP server and send UDP packet
-* get the MAC address list
+> before asking: I'm not try to make alternative for existing tools...
 
-# install 
+> It's just a simple tool with easy usage and clear, simple results.
+
+# Installation
 ```bash
 go install github.com/kehiy/taar@latest
 ```
+# Documents
 
-use --help to find out how it works!
+use `--help`` to find out how it works!
+### OR
+check the [Documents](./doc)
 
+# Contribution
 Contributions are welcomed!
+also It's good to [check this](./CONTRIBUTING.md) before.

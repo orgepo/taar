@@ -10,7 +10,7 @@ import (
 func BuildUDPCommand(parentCmd *cobra.Command) {
 	UDPCmd := &cobra.Command{
 		Use:   "udp",
-		Short: "UDP protocol utils",
+		Short: "UDP utils",
 	}
 	buildListenUDPCommand(UDPCmd)
 	buildSendPacketUDPCommand(UDPCmd)
@@ -21,7 +21,7 @@ func BuildUDPCommand(parentCmd *cobra.Command) {
 func buildListenUDPCommand(parentCmd *cobra.Command) {
 	listenCmd := &cobra.Command{
 		Use:   "listen",
-		Short: "listen to UDP packets",
+		Short: "listens to UDP packets",
 	}
 	parentCmd.AddCommand(listenCmd)
 
@@ -61,7 +61,7 @@ func buildListenUDPCommand(parentCmd *cobra.Command) {
 func buildSendPacketUDPCommand(parentCmd *cobra.Command) {
 	sendCmd := &cobra.Command{
 		Use:   "send",
-		Short: "send UDP packet to a server",
+		Short: "sends UDP packet to a server",
 	}
 	parentCmd.AddCommand(sendCmd)
 
