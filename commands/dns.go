@@ -61,10 +61,12 @@ func buildAskCommand(parentCmd *cobra.Command) {
 		if len(args) == 0 {
 			cmd.PrintErr("please provide a domain")
 		}
+
 		ips, err := net.LookupIP(args[0])
 		if err != nil {
 			cmd.PrintErrf("can't lookup address:%v", err)
 		}
+
 		for i, ip := range ips {
 			cmd.Printf("%d-%v\n", i, ip)
 		}

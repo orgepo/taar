@@ -51,6 +51,7 @@ func buildIPShowCommand(parentCmd *cobra.Command) {
 		if err != nil {
 			cmd.PrintErrf("can't get device IP address: %v", err)
 		}
+
 		for i, inter := range interfaces {
 			cmd.Printf("%d-%v\n", i, inter.String())
 		}

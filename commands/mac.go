@@ -28,6 +28,7 @@ func buildShowMACCommand(parentCmd *cobra.Command) {
 		if err != nil {
 			cmd.PrintErrf("can't get device MAC address: %v", err)
 		}
+
 		for i, inter := range interfaces {
 			cmd.Printf("%d-%v\n", i, inter.HardwareAddr)
 		}

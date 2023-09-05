@@ -9,6 +9,7 @@ import (
 
 func GetDataHTTP(URL string) []byte {
 	req, _ := http.NewRequestWithContext(context.Background(), http.MethodGet, URL, io.MultiReader())
+
 	response, err := http.DefaultClient.Do(req) //#nosec
 	if err != nil {
 		log.Println("Unable to get the response")

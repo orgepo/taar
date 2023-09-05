@@ -14,7 +14,7 @@ build:
 releaser:
 	goreleaser release
 
-cp:
+cp: build
 	sudo cp bin/taar /usr/bin 
 
 ### Formatting, linting, and vetting
